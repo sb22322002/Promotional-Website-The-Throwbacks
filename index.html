@@ -16,7 +16,7 @@
 
     <div>
         <div id="navbar">
-            <a class="active" href="#home">Home</a>
+            <a href="#home">Home</a>
             <a href="#calendar">Calendar</a>
             <a href="#history">History</a>
             <a href="#members">Members</a>
@@ -41,6 +41,7 @@
     </div>
 
     <div class="content">
+        <!-- Check July 2021 for testing -->
         <h1 id="calendar">Calendar</h1>
 
         <h2>
@@ -165,7 +166,7 @@
         </div>
 
         <div class="members_container">
-            <h2 class="name">Gabe Schatz(Former Member)</h2>
+            <h2 class="name">Gabe Schatz (Former Member)</h2>
             <img class="member_photo" alt="Gabe" src="assets/media/gabe.png">
             <p class="member_text">
                 Gabe Schatz joined the band in April of 2017. He offered vocals, a second trumpet, bass guitar, and
@@ -178,7 +179,7 @@
         </div>
 
         <div class="members_container">
-            <h2 class="name">Jackson Granger(Former Member)</h2>
+            <h2 class="name">Jackson Granger (Former Member)</h2>
             <img class="member_photo" alt="Jackson" src="assets/media/jackson.png">
             <p class="member_text">
                 Jackson Granger was in the band for a short span of time in the middle of the band's career. He has
@@ -192,7 +193,7 @@
         </div>
 
         <div class="members_container">
-            <h2 class="name">Adrian Lindhardt(Former Member)</h2>
+            <h2 class="name">Adrian Lindhardt (Former Member)</h2>
             <img class="member_photo" alt="Adrian" src="assets/media/adrian.png">
             <p class="member_text">
                 Adrian Lindhardt served a short time in the group when the band made its return in 2016. He has written
@@ -204,7 +205,8 @@
         </div>
 
         <div class="members_container">
-            <h2 class="name">Colton Crawford(Former Member)</h2>
+            <h2 class="name">Colton Crawford (Former Member)</h2>
+            <!-- No photo -->
             <p class="member_text">
                 Colton Crawford was one of the founding members in the 2015 days of the band. Since his interests
                 strayed away from music, he eventually left the band, but during his time he provided drums, bass
@@ -223,6 +225,8 @@
             60 on the list, and there are several more in the works. These are not necessarily all the original artists
             and their release dates. These are the versions The Throwbacks cover.
         </h2>
+        <label id="showMore" for="checkbox">See all songs...</label>
+        <input id="checkbox" type="checkbox" onclick="showMore('checkbox','showMore');">
         <p>
             <b>At The Hop</b> (Danny and the Juniors 1957)<br>
             <b>Bad Bad Leroy Brown</b> (Jim Croce 1973)<br>
@@ -296,9 +300,37 @@
             Want The Throwbacks to perform at your next party or event? Submit a performance request to see if we are
             avaliable!
         </h2>
-        <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfwlccsU9h6CwtI24--i3GzJwUMCKDCqMnBdEeyiUsIyt9Feg/viewform?embedded=true"
-            id="form"></iframe>
+
+        <form id="form">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" required><br>
+            <label for="phone">Phone Number:</label><br>
+            <input type="text" id="phone" name="phone" required><br>
+            <label for="dates">Proposed Dates:</label><br>
+            <input type="text" id="dates" name="dates" required><br>
+            <label for="desc">Brief Description of Event:</label><br>
+            <textarea id="desc" name="desc" required></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="content">
+        <h1>References</h1>
+
+        <p class="source">
+            CSS tutorial. (n.d.). Retrieved December 13, 2021, from https://www.w3schools.com/css/.
+        </p>
+
+        <p class="source">
+            JavaScript tutorial. (n.d.). Retrieved December 13, 2021, from https://www.w3schools.com/js/.
+        </p>
+
+        <p class="source">
+            How to - sticky/affix Navbar. How To Create a Sticky Navbar. (n.d.). Retrieved December 13, 2021, from
+            https://www.w3schools.com/howto/howto_js_navbar_sticky.asp.
+        </p>
     </div>
 
     <div class="content">
@@ -309,16 +341,28 @@
     </div>
 
     <script>
-        window.onscroll = function () { myFunction() };
+        window.onscroll = function () { moveNav() };
 
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
 
-        function myFunction() {
+        function moveNav() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky")
             } else {
                 navbar.classList.remove("sticky");
+            }
+        }
+
+        function showMore(checkbox, label) {
+
+            var checkboxvar = document.getElementById(checkbox);
+            var labelvar = document.getElementById(label);
+            if (!checkboxvar.checked) {
+                labelvar.innerHTML = "See all songs...";
+            }
+            else {
+                labelvar.innerHTML = "<span style='color: purple;'>Hide all songs...</span>";
             }
         }
     </script>
