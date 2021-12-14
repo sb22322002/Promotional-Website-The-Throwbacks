@@ -1,29 +1,47 @@
-body:not(#navbar) {
+body {
     margin: 0;
     padding: 0;
     color: black;
-    background-color: white;
+    background-color: #cccccc;
     font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
 h1, h2, p {
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 1em;
     text-align: center;
 }
 
 h1 {
     font-size: 2.25em;
     margin-top: 2em;
+    padding-top: 1.5em;
+    border-bottom: solid thin black;
+}
+
+header h1 {
+    font-size: 2.75em;
+    padding-top: 0.5em;
+    background-color: black;
+    color: white;
+    margin: 0;
 }
 
 h2 {
     font-size: 1.75em;
+    font-weight: 600;
 }
 
 p {
     font-size: 1.25em;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
 }
 
 #home_photo img{
@@ -55,10 +73,6 @@ p {
     width: 100%;
 }
 
-.sticky + .content {
-    padding-top: 500px;
-}
-
 #calendar_iframe{
     margin-left: 10%;
     width: 80%;
@@ -69,8 +83,9 @@ p {
     display: grid;
     grid-template-areas: "name member_photo"
                          "text member_photo";
-    grid-template-columns: 6fr 1fr;
+    grid-template-columns: 5fr 1fr;
     grid-template-rows: auto auto;
+    margin: 5%;
 }
 
 .name{
@@ -92,6 +107,77 @@ p {
     border: solid thick black;
 }
 
+#showMore {
+    font-size: 1.25em;
+    color: blue;
+    text-align: center;
+    display: block;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#showMore + input {
+   display:none;
+}
+
+#showMore + input + * {
+    background-color: white;
+    max-height: 0;
+    overflow:hidden;
+    transition: max-height 0.5s, overflow 0s;
+}
+
+#showMore + input:checked + p { 
+    max-height: 20em;
+    overflow:auto;
+    background-color: white;
+    transition: max-height 0.5s, overflow 0.5s 0.5s;
+}
+
+label {
+    display: inline-block;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+input[type=text], select, textarea {
+    display: block;
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin: 10%;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    resize: vertical;
+}
+
+input[type=submit] {
+    display: block;
+    width: 80%;
+    background-color: black;
+    color: white;
+    margin-top: 1em;
+    margin: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+input[type=submit]:hover {
+    background-color: #333333;
+}
+
+.source{
+    padding-left: 2em;
+    text-align: left;
+    text-indent: -2em;
+    margin-bottom: 2em;
+}
+
 @media only screen and (max-width: 1300px) {
     .members_container {
         display: grid;
@@ -99,7 +185,8 @@ p {
                              "member_photo"
                              "text";
         grid-template-columns: auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto auto auto;
+        margin: 0;
     }
 
     .name{
@@ -122,5 +209,27 @@ p {
         margin: 2em;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+@media only screen and (max-width: 768px) {
+    h1 {
+        padding-top: 1.25em;
+        font-size: 1.75em;
+    } 
+    h2 {
+        font-size: 1.25em;
+    }
+    p{
+        font-size: 1em;
+    }
+
+    #calendar_iframe{
+        width: 95%;
+        margin-left: 2.5%;
+    }
+
+    #navbar a{
+        padding: 6px;
+        font-size: 0.8em;
     }
 }
